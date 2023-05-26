@@ -13,13 +13,13 @@ let ageErr = false;
 let isSaled = false;
 let message = "Incorrect fields:\n";
 let mySale = 0;
+let myPriceSaled = 0;
 
 // userInput
 const myDistance = parseInt(prompt("Quanti km vuoi percorrere?", "100").trim());
 const myAge = parseInt(prompt("Quanti anni hai?", "20").trim());
 const myPrice = parseFloat((myDistance * tariffa).toFixed(2));
-const myPriceSaled = myPrice - (myPrice * mySale);
-console.log(myDistance, myAge, myPrice);
+// console.log(myDistance, myAge, myPrice);
 
 // validation
 if (isNaN(myDistance)){
@@ -50,6 +50,10 @@ if (isValid){
         } else {
             mySale = 0.4;
         }
+        myPriceSaled = myPrice - (myPrice * mySale)
+        console.log("myPrice: " + myPrice);
+        console.log("mySale: " + mySale);
+        console.log("myPriceSaled: " + myPriceSaled);
         sale.innerText = mySale;
         priceSaled.innerText = myPriceSaled;
     }
