@@ -50,7 +50,7 @@ if (isValid){
         } else {
             mySale = 0.4;
         }
-        myPriceSaled = myPrice - (myPrice * mySale)
+        myPriceSaled = myPrice - (myPrice * mySale);
         console.log("myPrice: " + myPrice);
         console.log("mySale: " + mySale);
         console.log("myPriceSaled: " + myPriceSaled);
