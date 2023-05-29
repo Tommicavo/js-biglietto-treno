@@ -4,8 +4,6 @@ const tariffa = 0.21
 const distance = document.getElementById("distance");
 const age = document.getElementById("age");
 const price = document.getElementById("price");
-const sale = document.getElementById("sale");
-const priceSaled = document.getElementById("price_saled");
 const minAge = 18;
 const maxAge = 65;
 
@@ -16,7 +14,6 @@ let isSaled = false;
 let message = "Incorrect fields:\n";
 let mySale = 0;
 
-
 // userInput
 const myDistance = parseInt(prompt("Quanti km vuoi percorrere?", "100").trim());
 const myAge = parseInt(prompt("Quanti anni hai?", "20").trim());
@@ -25,11 +22,11 @@ let myPriceSaled = myPrice;
 console.log(myDistance, myAge, myPrice, mySale, myPriceSaled);
 
 // validation
-if (isNaN(myDistance)){
+if (isNaN(myDistance) || myDistance <= 0){
     distErr = true;
     message += '"Distance"\n'
 }
-if (isNaN(myAge)){
+if (isNaN(myAge) || myAge <= 0){
     ageErr = true;
     message += '"Age"'
 }
@@ -48,12 +45,14 @@ if (isValid){
     price.innerText = myPrice;
 
     if (isSaled){
+        const sale = document.getElementById("sale");
+        const priceSaled = document.getElementById("price_saled");
         if (myAge < minAge){
             mySale = 0.2;
         } else {
             mySale = 0.4;
         }
-        myPriceSaled = myPrice - (myPrice * mySale);
+        myPriceSaled -= (myPriceSaled * mySale);
         sale.innerText = "Sale: " + (mySale * 100) + "%";
         priceSaled.innerText = "Price saled: " + myPriceSaled + "€";
     }
